@@ -4,7 +4,7 @@ export default function AppLogo() {
   return (
     <div className="w-24">
       <svg
-        className="w-full h-auto fill-none"
+        className="logo-reveal w-full h-auto fill-none"
         viewBox="0 0 295 73"
         xmlns="http://www.w3.org/2000/svg">
         <path

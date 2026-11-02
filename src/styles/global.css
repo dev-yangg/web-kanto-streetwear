@@ -25,3 +25,25 @@
 @utility content-boundary {
   @apply w-content-boundary-padded mx-auto;
 }
+
+/* Logo Animation */
+
+@utility logo-reveal {
+  & :is(path, ellipse) {
+    stroke-dasharray: 1;
+    animation: logo-reveal 1s var(--ease-in-sine) both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}
+
+@keyframes logo-reveal {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
