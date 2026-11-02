@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: #000;
+  --color-foreground: #fff;
+  --color-accent: rgb(160, 215, 102);
+
+  --boundary-padding: 1.5em;
+  --spacing-content-boundary: min(1440px, 100%);
+  --spacing-content-boundary-padded: min(
+    1440px,
+    100% - var(--boundary-padding)
+  );
+
+  --ease-in-sine: cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@utility content-boundary {
+  @apply w-content-boundary-padded mx-auto;
+}
