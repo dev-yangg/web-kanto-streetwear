@@ -1,24 +1,75 @@
 @import "tailwindcss";
+@import "@fontsource-variable/m-plus-u";
+@import "@fontsource-variable/inter";
+
+:root {
+  --background: #fff;
+  --foreground: #0a0a0a;
+  --background-inverse: #0a0a0a;
+  --bakground-inverse: #fff;
+  --surface: #f4f4f2;
+  --muted: #6b6b6b;
+  --muted-foreground: #6b6b6b;
+  --subtle: #e2e2e0;
+  --accent: hsl(75, 100%, 45%);
+
+  --font-base:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 
 @theme {
-  --color-background: #fff;
-  --color-foreground: #000;
-  --color-accent: rgb(164, 46, 52);
+  /* FOnt size */
+  --text-heading-1: clamp(4rem, 5vw + 1.5rem, 6rem);
+  --text-heading-2: clamp(2rem, 4vw + 1.5rem, 3rem);
+  --text-heading-3: clamp(1.5rem, 3vw + 1.5rem, 2rem);
+  --text-heading-4: clamp(1.25rem, 2vw + 1.5rem, 1.5rem);
+  --text-regular: clamp(0.95rem, 1vw + 0.715rem, 1.125rem);
+  --text-small: clamp(0.5125rem, 0.6rem + 0.2vw, 0.715rem);
 
+  /* Font weights */
+  --font-weight-extralight: 100;
+  --font-weight-light: 200;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 900;
+
+  /* Layouts */
   --boundary-padding: 1.5em;
   --spacing-content-boundary: min(1440px, 100%);
   --spacing-content-boundary-padded: min(
     1440px,
     100% - var(--boundary-padding)
   );
+  --spacing-max-boundary: min(1920px, 100%);
+  --spacing-max-boundary-padded: min(1920px, 100% - var(--boundary-padding));
 
+  /* Easing */
   --ease-in-sine: cubic-bezier(0.12, 0, 0.39, 0);
+  --ease-swap: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-background-inverse: var(--background-inverse);
+  --color-foreground-inverse: var(--foreground-inverse);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+
+  --font-sans: "Inter Variable", var(--font-base);
 }
 
 @layer base {
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: var(--text-regular);
   }
 }
 
@@ -60,4 +111,22 @@
     height: 2px;
     background-color: var(--color-accent);
   }
+}
+
+@utility font-m-plus {
+  font-family: "M PLUS U Variable", var(--font-sans);
+  word-spacing: 0.1em;
+}
+
+@utility bleed-grid {
+  grid-template-columns:
+    minmax(0, 1fr)
+    var(--spacing-content-boundary)
+    minmax(0, 1fr);
+}
+@utility bleed-grid-max {
+  grid-template-columns:
+    minmax(0, 1fr)
+    var(--spacing-max-boundary)
+    minmax(0, 1fr);
 }
