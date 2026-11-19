@@ -1,15 +1,16 @@
 import React from "react";
 import type { HeadFC } from "gatsby";
 import AppLayout from "../layouts/AppLayout";
+import Hero from "../components/home/Hero";
 
 export default function Homepage() {
   return (
     <AppLayout>
       <main>
-        <div className="content-boundary"></div>
+        <Hero />
       </main>
     </AppLayout>
   );
 }
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Home | Kantō</title>;
