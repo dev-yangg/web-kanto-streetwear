@@ -82,7 +82,7 @@ export default function Hero() {
             <RightArrowCTA
               path="/"
               label="VIEW THE DROP"
-              className="bg-accent pl-7 pr-5 py-4 font-bold text-small hover:-translate-y-0.5 hover:translate-x-0.75 transition-transform duration-75 ease-in-sine group"
+              className="bg-accent pl-7 pr-5 py-4 font-bold text-tiny hover:-translate-y-0.5 hover:translate-x-0.75 transition-transform duration-75 ease-in-sine group"
               labelClassName="transition-transform duration-75 ease-in-sine group-hover:translate-x-0.15"
               iconClassName="transition-transform duration-75 ease-in-sine group-hover:translate-x-0.75 group-hover:-translate-y-0.25"
             />

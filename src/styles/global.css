@@ -25,7 +25,8 @@
   --text-heading-3: clamp(1.5rem, 3vw + 1.5rem, 2rem);
   --text-heading-4: clamp(1.25rem, 2vw + 1.5rem, 1.5rem);
   --text-regular: clamp(0.95rem, 1vw + 0.715rem, 1.125rem);
-  --text-small: clamp(0.5125rem, 0.6rem + 0.2vw, 0.715rem);
+  --text-small: clamp(0.7125rem, 0.7rem + 0.2vw, 0.915rem);
+  --text-tiny: clamp(0.5125rem, 0.6rem + 0.2vw, 0.715rem);
 
   /* Font weights */
   --font-weight-extralight: 100;
