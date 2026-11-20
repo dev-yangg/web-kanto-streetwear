@@ -37,7 +37,6 @@ export default function BrandStatement() {
         trigger: container.current,
         start: "top 88%",
         once: true,
-        markers: true,
         onEnter: () => {
           inView = true;
           playTl();
