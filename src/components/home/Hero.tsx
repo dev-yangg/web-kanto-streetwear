@@ -2,6 +2,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import React, { useRef } from "react";
 import RightArrowCTA from "../RightArrowCTA";
 import { gsap, useGSAP, SplitText } from "../../lib/gsap/config";
+import { fadeUp, revealSplitText, prepSplit } from "../../lib/gsap/animation";
 
 export default function Hero() {
   const heroSection = useRef<HTMLElement | null>(null);
@@ -16,37 +17,18 @@ export default function Hero() {
         tag: "span",
         autoSplit: true,
         onSplit(self) {
-          gsap.set(self.words, { display: "inline-block" });
-          gsap.set(self.chars, { display: "inline-block" });
-          gsap.set(self.lines, { display: "block" });
-          gsap.set(self.masks, { display: "block" });
-          gsap.set("h1", { autoAlpha: 1 });
-
-          gsap.set(self.words, { display: "inline-block" });
-          gsap.set(self.chars, { display: "inline-block" });
-          gsap.set(self.lines, { display: "block" });
-          gsap.set(self.masks, { display: "block" });
+          prepSplit(self);
 
           const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-          tl.set(q("h1"), { autoAlpha: 1 })
-            .fromTo(
-              q("[data-animated=eyebrow]"),
-              { autoAlpha: 0, y: 10 },
-              { autoAlpha: 1, y: 0, duration: 0.6 },
-              0,
-            )
-            .from(
-              self.chars,
-              { yPercent: 110, duration: 0.8, stagger: 0.03 },
-              0.2,
-            )
-            .fromTo(
-              q("[data-animated=cta]"),
-              { autoAlpha: 0, y: 10 },
-              { autoAlpha: 1, y: 0, duration: 0.65 },
-              ">-1", // starts 0.15s before the heading finishes
-            );
+          tl.set(q("h1"), { autoAlpha: 1 });
+          fadeUp(q("[data-animated=eyebrow]"), { tl, position: 0 });
+          revealSplitText(self.chars, { tl, position: 0.2 });
+          fadeUp(q("[data-animated=cta]"), {
+            tl,
+            position: ">-1",
+            vars: { duration: 0.65 },
+          });
 
           return tl;
         },
@@ -58,7 +40,7 @@ export default function Hero() {
   return (
     <section
       ref={heroSection}
-      className="grid grid-cols-1 md:bleed-grid-max min-h-[60dvh] isolate">
+      className="grid grid-cols-1 md:bleed-grid-max min-h-[88dvh] lg:min-h-[80dvh] isolate">
       <StaticImage
         src="../../images/products/signature-bomber-jacket.webp"
         alt="Signature Bomber Jacket"
