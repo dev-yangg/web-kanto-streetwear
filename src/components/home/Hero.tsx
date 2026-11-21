@@ -53,14 +53,14 @@ export default function Hero() {
       <div className="self-center row-start-1 col-start-1 md:col-start-2 md:col-end-3 grid content-boundary grid-cols-1 md:grid-cols-2">
         <div>
           <p className="inline-block text-accent font-semibold text-small overflow-y-clip">
-            <span className="inline-block" data-animated="eyebrow">
+            <span className="inline-block invisible" data-animated="eyebrow">
               NEW DROP/01
             </span>
           </p>
           <h1 className="invisible text-background text-heading-1 font-m-plus leading-none font-bold mt-2 mb-8 tracking-tighter w-[min(440px,100%)] md:w-[min(550px,100%)]">
             BUILT FOR THE CITY
           </h1>
-          <div data-animated="cta" className="overflow-y-clip">
+          <div data-animated="cta" className="invisible">
             <RightArrowCTA
               path="/"
               label="VIEW THE DROP"
