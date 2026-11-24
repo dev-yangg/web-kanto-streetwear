@@ -10,8 +10,6 @@ const LIMIT = 3;
 export default function FeaturedLatest() {
   const latest = useProducts().slice(0, LIMIT);
 
-  console.log(latest);
-
   return (
     <section className="py-14">
       <div className="content-boundary">
