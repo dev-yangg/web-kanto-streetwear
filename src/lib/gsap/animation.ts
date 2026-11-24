@@ -37,6 +37,7 @@ export function revealSplitText(
   );
 }
 
+// SplitText (of gsap) renders divs to contain split text by default. I use spans for the split text so I need to override the inline default behavior of it
 export function prepSplit(self: SplitText) {
   gsap.set(self.words, { display: "inline-block" });
   gsap.set(self.chars, { display: "inline-block" });
