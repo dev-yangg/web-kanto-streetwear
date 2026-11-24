@@ -27,7 +27,7 @@ export default function FeaturedLatest() {
           </Link>
         </header>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {latest.map((p) => (
+          {latest.map((p: Product) => (
             <FeaturedCard
               key={p.slug}
               imageUrl={p.image}
