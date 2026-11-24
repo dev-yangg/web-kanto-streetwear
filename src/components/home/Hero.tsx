@@ -9,8 +9,6 @@ export default function Hero() {
 
   useGSAP(
     () => {
-      const q = gsap.utils.selector(heroSection);
-
       SplitText.create("h1", {
         type: "lines, words, chars",
         mask: "lines",
@@ -21,10 +19,10 @@ export default function Hero() {
 
           const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-          tl.set(q("h1"), { autoAlpha: 1 });
-          fadeUp(q("[data-animated=eyebrow]"), { tl, position: 0 });
+          tl.set("h1", { autoAlpha: 1 });
+          fadeUp("[data-animated=eyebrow]", { tl, position: 0 });
           revealSplitText(self.chars, { tl, position: 0.2 });
-          fadeUp(q("[data-animated=cta]"), {
+          fadeUp("[data-animated=cta]", {
             tl,
             position: ">-1",
             vars: { duration: 0.65 },

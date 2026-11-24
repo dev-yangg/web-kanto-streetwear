@@ -6,13 +6,12 @@ export default function BrandStatement() {
   const container = useRef<HTMLElement | null>(null);
   useGSAP(
     () => {
-      const q = gsap.utils.selector(container);
       const statement = "[data-animated=statement]";
       const mission = "[data-animated=mission]";
 
       // master timeline, paused until both splits are ready
       const tl = gsap.timeline({ paused: true });
-      fadeUp(q("[data-animated=eyebrow]"), {
+      fadeUp("[data-animated=eyebrow]", {
         tl,
         position: 0,
         vars: { duration: 1.25 },
