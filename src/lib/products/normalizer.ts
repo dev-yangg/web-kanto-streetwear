@@ -4,8 +4,17 @@ type MdxNode = Queries.UseProductsQuery["allMdx"]["nodes"][number];
 
 export const normalizeProduct = (node: MdxNode): Product | null => {
   const f = node.frontmatter;
-  const image = f?.image?.childImageSharp?.gatsbyImageData;
-  if (!f?.slug || !f.name || !f.date || !image) return null; // required fields
+  const images = (f?.images ?? []).flatMap((img) => {
+    const data = img?.src?.childImageSharp?.gatsbyImageData;
+    return data && img?.alt ? [{ image: data, alt: img.alt }] : [];
+  });
+
+  if (!f?.slug || !f.name || !f.date || images.length === 0) {
+    console.warn(
+      `[normalizeProduct] dropped "${f?.slug ?? "unknown"}": missing required field or image`,
+    );
+    return null;
+  } // required fields
 
   return {
     slug: f.slug,
@@ -14,8 +23,7 @@ export const normalizeProduct = (node: MdxNode): Product | null => {
     stock: f.stock ?? 0,
     tags: (f.tags ?? []).filter((t): t is string => !!t),
     buyUrl: f.buyUrl ?? "",
-    image,
-    imageAlt: f.imageAlt ?? f.name,
+    images,
     description: f.seo?.description ?? "",
   };
 };

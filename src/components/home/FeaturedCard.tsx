@@ -17,7 +17,12 @@ export default function FeaturedCard({
 }: Props) {
   return (
     <figure>
-      <GatsbyImage image={imageUrl} alt={imageAlt} />
+      <GatsbyImage
+        image={imageUrl}
+        alt={imageAlt}
+        className="aspect-7/5"
+        imgClassName="object-cover object-top"
+      />
       <figcaption className="flex flex-col gap-y-2 mt-3 items-start">
         <h3 className="text-small font-m-plus font-bold uppercase">{name}</h3>
         <span

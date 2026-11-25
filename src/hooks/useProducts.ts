@@ -11,7 +11,6 @@ export const useProducts = () => {
         frontmatter {
           buyUrl
           date
-          imageAlt
           name
           seo {
             description
@@ -19,9 +18,12 @@ export const useProducts = () => {
           slug
           stock
           tags
-          image {
-            childImageSharp {
-              gatsbyImageData(formats: AUTO, width: 600)
+          images {
+            alt
+            src {
+                childImageSharp {
+                gatsbyImageData(formats: AUTO, width: 600)
+              }
             }
           }
         }

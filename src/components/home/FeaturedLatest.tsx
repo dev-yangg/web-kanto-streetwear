@@ -27,15 +27,19 @@ export default function FeaturedLatest() {
           </Link>
         </header>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {latest.map((p: Product) => (
-            <FeaturedCard
-              key={p.slug}
-              imageUrl={p.image}
-              imageAlt={p.imageAlt}
-              name={p.name}
-              isAvailable={p.stock > 0}
-            />
-          ))}
+          {latest.map(({ slug, images, name, stock }) => {
+            const cover = images[0];
+
+            return (
+              <FeaturedCard
+                key={slug}
+                imageUrl={cover.image}
+                imageAlt={cover.alt}
+                name={name}
+                isAvailable={stock > 0}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

@@ -7,7 +7,6 @@ export type Product = {
   stock: number;
   tags: string[];
   buyUrl: string;
-  image: IGatsbyImageData;
-  imageAlt: string;
+  images: { image: IGatsbyImageData; alt: string }[];
   description: string;
 };
